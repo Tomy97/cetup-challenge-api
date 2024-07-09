@@ -9,7 +9,7 @@ namespace cetup_api.Services.Interfaces
 
         Task<ProvinciaDto> CreateProvinciaAsync(ProvinciaDto provinciaDto);
 
-        Task<ProvinciaDto> DeleteProvinciaAsync(ProvinciaDto provinciaDto);
+        Task<ProvinciaDto> DeleteProvinciaAsync(int id);
 
         Task<ProvinciaDto> UpdateProvinciaAsync(ProvinciaDto provinciaDto);
     }

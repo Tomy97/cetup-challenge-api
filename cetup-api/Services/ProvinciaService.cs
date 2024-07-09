@@ -37,9 +37,9 @@ namespace cetup_api.Services
             return _mapper.Map<ProvinciaDto>(provincia);
         }
 
-        public async Task<ProvinciaDto> DeleteProvinciaAsync(ProvinciaDto provinciaDto)
+        public async Task<ProvinciaDto> DeleteProvinciaAsync(int id)
         {
-            Provincia provincia = _mapper.Map<Provincia>(provinciaDto);
+            Provincia provincia = await _provinciaRepository.GetByIdAsync(id);
             await _provinciaRepository.DeleteAsync(provincia);
             return _mapper.Map<ProvinciaDto>(provincia);
         }

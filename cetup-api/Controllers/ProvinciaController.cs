@@ -49,11 +49,11 @@ namespace cetup_api.Controllers
             return CreatedAtAction(nameof(GetProvincia), new { id = provincia.Id }, provincia);
         }
 
-        [HttpDelete]
-        public async Task<ActionResult<ProvinciaDto>> DeleteProvincia([FromBody] ProvinciaDto provinciaDto)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ProvinciaDto>> DeleteProvincia(int id)
         {
-            var provincia = await _provinciaService.DeleteProvinciaAsync(provinciaDto);
-            return CreatedAtAction(nameof(GetProvincia), new { id = provincia.Id }, provincia);
+            var provincia = await _provinciaService.DeleteProvinciaAsync(id);
+            return Ok(provincia);
         }
 
     }
