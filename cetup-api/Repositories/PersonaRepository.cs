@@ -1,7 +1,9 @@
 ﻿using cetup_api.Data;
 using cetup_api.Data.Entities;
+using cetup_api.Dtos;
 using cetup_api.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace cetup_api.Repositories
 {
@@ -20,6 +22,13 @@ namespace cetup_api.Repositories
 
         public async Task AddAsync(Persona persona)
         {
+            bool hasExist = _context.Personas.Any(x => x.DNI == persona.DNI);
+
+            if (hasExist)
+            {
+                throw new Exception("Ya existe una persona con el mismo DNI");
+            }
+
             await _context.Personas.AddAsync(persona);
             await _context.SaveChangesAsync();
         }

@@ -21,6 +21,12 @@ namespace cetup_api.Repositories
 
         public async Task CreateAsync(Provincia provincia)
         {
+            bool hasExist = _context.Provincias.Any(x => x.Nombre == provincia.Nombre);
+
+            if (hasExist)
+            {
+                throw new Exception("Ya existe esta provincia");
+            }
             await _context.Provincias.AddAsync(provincia);
             await _context.SaveChangesAsync();
         }

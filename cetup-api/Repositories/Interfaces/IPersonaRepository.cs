@@ -9,5 +9,7 @@ namespace cetup_api.Repositories.Interfaces
         Task AddAsync(Persona persona);
         Task UpdateAsync(Persona persona);
         Task DeleteAsync(Persona persona);
+
+        bool ExistsByDni(string dni);
     }
 }
