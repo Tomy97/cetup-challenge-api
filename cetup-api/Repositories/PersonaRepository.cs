@@ -22,8 +22,8 @@ namespace cetup_api.Repositories
 
         public async Task AddAsync(Persona persona)
         {
+            
             bool hasExist = _context.Personas.Any(x => x.DNI == persona.DNI);
-
             if (hasExist)
             {
                 throw new Exception("Ya existe una persona con el mismo DNI");
@@ -45,5 +45,7 @@ namespace cetup_api.Repositories
             _context.Personas.Remove(personaToDelete!);
             await _context.SaveChangesAsync();
         }
+
+        public bool ExistsByDni(string dni) => _context.Personas.Any(x => x.DNI == dni);
     }
 }
